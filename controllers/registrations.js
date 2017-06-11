@@ -1,23 +1,53 @@
-//handles handles the creation of new registrations and adds them to the user db
-const User =require('../models/user');
+const User = require('../models/user');
 
-function registrationsNew(req, res) {
+function newRoute(req, res) {
   return res.render('registrations/new');
 }
 
-function registrationsCreate(req, res) {
+function createRoute(req, res, next) {
   User
-  .create(req.body)
-  .then(() => res.redirect('/login'))
-  .catch((err) => {
-    if (err.name === 'ValidationError') {
-      return res.status(400).render('registrations/new', { message: 'Passwords do not Match'});
-    }
-    res.status(500).end();
-  });
+    .create(req.body)
+    .then(() => res.redirect('/login'))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
+      next(err);
+    });
+}
+
+function showRoute(req, res) {
+  return res.render('registrations/show');
+}
+
+function editRoute(req, res) {
+  return res.render('registrations/edit');
+}
+
+function updateRoute(req, res, next) {
+  for(const field in req.body) {
+    req.user[field] = req.body[field];
+  }
+
+  req.user.save()
+    .then(() => res.redirect('/profile'))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest('/profile/edit', err.toString());
+      next(err);
+    });
+}
+
+function deleteRoute(req, res, next) {
+  return req.user.remove()
+    .then(() => {
+      req.session.regenerate(() => res.redirect('/'));
+    })
+    .catch(next);
 }
 
 module.exports = {
-  new: registrationsNew,
-  create: registrationsCreate
+  new: newRoute,
+  create: createRoute,
+  show: showRoute,
+  edit: editRoute,
+  update: updateRoute,
+  delete: deleteRoute
 };

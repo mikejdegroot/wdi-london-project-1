@@ -41,7 +41,6 @@ User
 })
   .then((sets) => {
     console.log(`${sets.length} sets created!`);
-    console.log(Set);
   })
   .catch((err) => {
     console.log(err);

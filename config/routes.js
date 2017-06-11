@@ -26,8 +26,16 @@ router.route('/set/:id/edit')
 .get(secureRoute, set.edit);
 
 router.route('/register')
-.get(registrations.new)
-.post(registrations.create);
+  .get(registrations.new)
+  .post(registrations.create);
+
+router.route('/profile')
+  .get(secureRoute, registrations.show)
+  .put(secureRoute, registrations.update)
+  .delete(secureRoute, registrations.delete);
+
+router.route('/profile/edit')
+  .get(secureRoute, registrations.edit);
 
 router.route('/login')
 .get(sessions.new)
