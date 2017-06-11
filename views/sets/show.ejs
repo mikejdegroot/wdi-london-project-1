@@ -6,6 +6,6 @@
   <li><p><%=set.tracks%></p></li>
 </ul>
 <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
-          <form method="POST" action="/set/<%= set.id %>">
+          <form method="POST" action="/sets/<%= set.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button class="btn btn-danger">Delete</button>

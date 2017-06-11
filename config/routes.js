@@ -18,9 +18,12 @@ router.route('/sets/new')
 .get(set.new);
 // .get(secureRoute, set.new);
 
+router.route('/set/:id/edit')
+.get(set.edit);
+
 router.route('/sets/:id')
-.get(set.show);
-// .put(secureRoute, set.update)
-// .delete(secureRoute, set.delete);
+.get(set.show)
+.put(set.update)
+.delete(set.delete);
 
 module.exports = router;
