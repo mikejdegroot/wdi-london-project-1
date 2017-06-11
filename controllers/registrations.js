@@ -13,7 +13,6 @@ function registrationsCreate(req, res) {
     if (err.name === 'ValidationError') {
       return res.status(400).render('registrations/new', { message: 'Passwords do not Match'});
     }
-    // return res.status(400).render('registrations/new', { message: 'Passwords do not Match'});
     res.status(500).end();
   });
 }

@@ -30,15 +30,18 @@ User
   .create([{
     name: 'Ill Beats',
     date: 20170823,
-    tracks: 'Madonna- Die Another Day, DJ Shadow- Organ Donor, Ice Cube- It Was A Good Day'
+    tracks: 'Madonna- Die Another Day, DJ Shadow- Organ Donor, Ice Cube- It Was A Good Day',
+    createdBy: users[0]
   }, {
     name: 'Classics',
     date: 20170823,
-    tracks: 'Elvis Presley- A Little Less Conversation, Destinys Child- independant Woman, TLC- No Scrubs, Hanson- Mmmbop'
+    tracks: 'Elvis Presley- A Little Less Conversation, Destinys Child- independant Woman, TLC- No Scrubs, Hanson- Mmmbop',
+    createdBy: users[0]
   }]);
 })
   .then((sets) => {
     console.log(`${sets.length} sets created!`);
+    console.log(Set);
   })
   .catch((err) => {
     console.log(err);

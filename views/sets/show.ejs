@@ -4,6 +4,7 @@
   <li><h2><%= set.name %></h2></li>
   <li><h3><%= set.date %></h3></li>
   <li><p><%=set.tracks%></p></li>
+  <li><p><%=set.createdBy %></p></li>
 </ul>
 <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
           <form method="POST" action="/sets/<%= set.id %>">

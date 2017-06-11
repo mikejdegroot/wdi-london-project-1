@@ -3,7 +3,7 @@ const sessions     =  require('../controllers/sessions');
 const set          =  require('../controllers/sets');
 const statics      =  require('../controllers/statics');
 const registrations=  require('../controllers/registrations');
-// const secureRoute  =  require('../lib/secureRoute');
+const secureRoute  =  require('../lib/secureRoute');
 
 
 
@@ -15,15 +15,15 @@ router.route('/sets')
 .post(set.create);
 
 router.route('/sets/new')
-.get(set.new);
-
-router.route('/set/:id/edit')
-.get(set.edit);
+.get(secureRoute,set.new);
 
 router.route('/sets/:id')
 .get(set.show)
-.put(set.update)
-.delete(set.delete);
+.put(secureRoute, set.update)
+.delete(secureRoute, set.delete);
+
+router.route('/set/:id/edit')
+.get(secureRoute, set.edit);
 
 router.route('/register')
 .get(registrations.new)
