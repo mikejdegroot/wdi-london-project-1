@@ -1,0 +1,10 @@
+<h1>Sets</h1>
+
+<ul>
+  <% sets.forEach((set) => { %>
+    <li>
+    <a href="/sets/<%= set.id %>"><%= set.name %></h3></a>
+    </li>
+  <% }) %>
+  <a href="/sets/new" class="btn btn-primary">New</a>
+</ul>
