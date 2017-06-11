@@ -29,9 +29,11 @@ User
   return Set
   .create([{
     name: 'Ill Beats',
+    date: 20170823,
     tracks: 'Madonna- Die Another Day, DJ Shadow- Organ Donor, Ice Cube- It Was A Good Day'
   }, {
     name: 'Classics',
+    date: 20170823,
     tracks: 'Elvis Presley- A Little Less Conversation, Destinys Child- independant Woman, TLC- No Scrubs, Hanson- Mmmbop'
   }]);
 })

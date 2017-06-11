@@ -2,6 +2,7 @@
 <!-- show each db item in more detail, uses the id of the item to populate the html, negating the need for a page per item, very dry-->
 <ul class="col-lg-4">
   <li><h2><%= set.name %></h2></li>
+  <li><h3><%= set.date %></h3></li>
   <li><p><%=set.tracks%></p></li>
 </ul>
 <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>

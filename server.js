@@ -7,6 +7,7 @@ const mongoose        = require('mongoose'); // models/schema construction
 mongoose.promise      = require('bluebird'); // mongoose add on
 const methodOverride  = require('method-override');
 const routes          = require('./config/routes');
+const bodyParser      = require('body-parser');
 
 
 const { port, dbURI, secret } = require('./config/environment');
@@ -20,6 +21,7 @@ app.set('views', `${__dirname}/views`);
 app.use(morgan('dev'));
 app.use(expressLayouts);
 app.use(express.static(`${__dirname}/public`));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session( {
   secret,
   resave: false,

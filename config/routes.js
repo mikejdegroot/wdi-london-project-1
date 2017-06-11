@@ -11,8 +11,12 @@ router.route('/')
 .get(statics.index);
 
 router.route('/sets')
-.get(set.index);
-// .post(set.create);
+.get(set.index)
+.post(set.create);
+
+router.route('/sets/new')
+.get(set.new);
+// .get(secureRoute, set.new);
 
 router.route('/sets/:id')
 .get(set.show);
