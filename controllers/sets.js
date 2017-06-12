@@ -21,7 +21,13 @@ function setsCreate(req, res, next) {
   Set
   .create(req.body)
   .then(() => res.redirect('/sets'))
-  .catch(next);
+  .catch((err) => {
+    if(err.name === 'ValidationError') {
+      return res.badRequest('/sets/new', err.toString());
+    }
+    next(err);
+  });
+
 }
 
 function setsShow(req, res, next) {
@@ -39,14 +45,14 @@ function setsShow(req, res, next) {
 function setsEdit(req, res, next) {
   console.log(req.user);
   Set
-    .findById(req.params.id)
-    .exec()
-    .then((set) => {
-      if(!set) return res.redirect();
-      if(!set.belongsTo(req.user)) return res.unauthorized(`/sets/${set.id}`, 'You do not have permission to edit that resource');
-      return res.render('sets/edit', { set });
-    })
-    .catch(next);
+  .findById(req.params.id)
+  .exec()
+  .then((set) => {
+    if(!set) return res.redirect();
+    if(!set.belongsTo(req.user)) return res.unauthorized(`/sets/${set.id}`, 'You do not have permission to edit that resource');
+    return res.render('sets/edit', { set });
+  })
+  .catch(next);
 }
 
 
@@ -54,12 +60,13 @@ function setsUpdate(req, res, next) {
   Set
   .findById(req.params.id) //find the set with the id contained in thr request
   .then((set) => { //then, on that found id
-    if(!set) return res.status(404).render('statics/404'); //if the id isnt valid, return 404
+    if(!set) return res.redirect(); //if the id isnt valid, return 404
     for(const field in req.body) { //for every field in req body
       set[field] = req.body[field]; //replace the correspndng field in the db with that in the req
     }
     return set.save(); //save the edited db entry
   })
+  
   .then((set) => res.redirect(`/sets/${set.id}`)) //redirect to the item id
   .catch(next); //move on
 }

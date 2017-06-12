@@ -1,3 +1,27 @@
 body {
   background-color: white;
 }
+
+ul {
+  list-style-type: none;
+
+  .setname {
+    font-size: 50px;
+    color: crimson;
+  }
+  .setdate {
+    color: dodgerBlue;
+  }
+}
+
+.colomns {
+  float: left;
+  margin-left: 25px;
+}
+
+.has-error {
+  border-color: crimson;
+}
+.error-throw{
+  color: crimson;
+}

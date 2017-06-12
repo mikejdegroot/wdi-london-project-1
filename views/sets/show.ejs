@@ -1,33 +1,34 @@
 <h1>set</h1>
 <!-- show each db item in more detail, uses the id of the item to populate the html, negating the need for a page per item, very dry-->
-<ul class="col-lg-4">
-  <li><h2><%= set.name %></h2></li>
-  <li><h3><%= set.date %></h3></li>
-  <li><p><%=set.createdBy.username %></p></li>
+<ul class="colomns col-lg-3">
+  <li><h2 class="setname"><%= set.name %></h2></li>
+  <li><h3 class="setdate"><%= set.date %></h3></li>
+  <li><p class="setuser"><%=set.createdBy.username %></p></li>
 </ul>
-<h4>Tracks</h4>
-<section>
+<h4>Set List</h4>
+<section class="colomns col-lg-3">
 <% set.tracks.forEach((track) => { %>
   <p><%= track.content %></p>
   <% if(locals.isLoggedIn && track.belongsTo(user)) { %>
     <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
       <input type="hidden" name="_method" value="DELETE">
-      <button>Delete</button>
+      <button class="btn">Delete</button>
     </form>
   <% } %>
 <% }) %>
 </section>
-<% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-    <a href="/sets/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
-    <form method="POST" action="/sets/<%= set.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-danger">Delete</button>
-    </form>
-  <section>
+
+  <section class="colomns col-lg-3">
+    <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
     <h4>Add a Track</h4>
   <form method="POST" action="/sets/<%= set.id %>/tracks">
     <textarea name="content" id="content" placeholder="track"></textarea>
-    <button class="button">Add track</button>
+    <button class="btn">Add track</button>
+  </form>
+  <a href="/sets/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
+  <form method="POST" action="/sets/<%= set.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-danger">Delete</button>
   </form>
 </section>
 

@@ -11,7 +11,7 @@ function statics404(req, res) {
   User                           //when index is called for by the router, find all users in the db
     .find()
     .exec()
-    .then(() => res.render('statics/404')); //render the users on the statics index
+    .then(() => res.render('statics/404')); //render the users on the statics 404
 }
 
 module.exports = {

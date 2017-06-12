@@ -1,11 +1,6 @@
 <!-- The login page, called session refering to the session cookie-->
 <h1>Login</h1>
-<!-- display any messages from flash here (you need to log in etc)-->
-<% if (locals.message) { %>
-  <p><%= message %></p>
-<% } %>
-
-<form method="POST" action="/login" class="col-lg-4">
+<form method="POST" action="/login" class="col-lg-4 submit-form">
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text" name="email" id="email" class="form-control">

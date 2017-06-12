@@ -29,12 +29,12 @@ User
   return Set
   .create([{
     name: 'Ill Beats',
-    date: 20170823,
+    date: '2017/08/23',
     tracks: [],
     createdBy: users[0]
   }, {
     name: 'Classics',
-    date: 20170823,
+    date: '2017/08/23',
     tracks: [],
     createdBy: users[0]
   }]);

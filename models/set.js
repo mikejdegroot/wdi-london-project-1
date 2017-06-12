@@ -14,7 +14,7 @@ trackSchema.methods.belongsTo = function trackBelongsTo(user) {
 
 const setSchema = new mongoose.Schema({
   name: {type: String, required: true},
-  date: {type: Number, required: true},
+  date: {type: String, required: true, match: /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/},
   tracks: [trackSchema],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true}
   //tells mongoose that the object id will be the user id

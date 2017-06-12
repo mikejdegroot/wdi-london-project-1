@@ -9,14 +9,13 @@ function sessionsCreate(req, res) {
     .findOne({ email: req.body.email })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) {
-        return res.status(401).render('sessions/new', { message: 'Unrecognised credentials' });
+        return res.badRequest('/login', 'Incorrect credentials');
       }
 
       req.session.userId = user.id;
       req.session.isLoggedIn = true;
 
       req.flash('success', `Welcome back, ${user.username}!`);
-
       return res.redirect('/');
     });
 }
