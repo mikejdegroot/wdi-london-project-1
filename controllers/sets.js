@@ -27,7 +27,7 @@ function setsCreate(req, res, next) {
 function setsShow(req, res, next) {
   Set
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy tracks.createdBy')
     .exec()
     .then((set) => {
       if(!set) return res.status(404).render('statics/404');
@@ -71,6 +71,38 @@ function setsDelete(req, res, next) {
   .catch(next);
 }
 
+function createTrackRoute(req, res, next) {
+
+  req.body.createdBy = req.user;
+
+  Set
+    .findById(req.params.id)
+    .exec()
+    .then((set) => {
+      if(!set) return res.notFound();
+
+      set.tracks.push(req.body); // create an embedded record
+      return set.save();
+    })
+    .then((set) => res.redirect(`/sets/${set.id}`))
+    .catch(next);
+}
+
+function deleteTrackRoute(req, res, next) {
+  Set
+    .findById(req.params.id)
+    .exec()
+    .then((set) => {
+      if(!set) return res.notFound();
+      // get the embedded record by it's id
+      const comment = set.tracks.id(req.params.trackId);
+      comment.remove();
+
+      return set.save();
+    })
+    .then((set) => res.redirect(`/sets/${set.id}`))
+    .catch(next);
+}
 
 module.exports = {
   index: setsIndex,
@@ -79,5 +111,7 @@ module.exports = {
   create: setsCreate,
   edit: setsEdit,
   update: setsUpdate,
-  delete: setsDelete
+  delete: setsDelete,
+  createTrack: createTrackRoute,
+  deleteTrack: deleteTrackRoute
 };

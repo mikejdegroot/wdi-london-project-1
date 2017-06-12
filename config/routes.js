@@ -44,5 +44,11 @@ router.route('/login')
 router.route('/logout')
 .get(sessions.delete);
 
+router.route('/sets/:id/tracks')
+  .post(secureRoute, set.createTrack);
+
+router.route('/sets/:id/tracks/:trackId')
+  .delete(secureRoute, set.deleteTrack);
+
 
 module.exports = router;

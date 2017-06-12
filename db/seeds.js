@@ -13,12 +13,12 @@ User.collection.drop(); //wipes clean db and loads the below info
 User
 .create([{
   username: 'mikeydee',
-  email: 'mike@gmail.com',
+  email: 'm',
   password: 'password',
   passwordConfirmation: 'password'
 }, {
   username: 'AlexB',
-  email: 'alex@gmail.com',
+  email: 'a',
   password: 'password',
   passwordConfirmation: 'password'
 }])
@@ -30,12 +30,12 @@ User
   .create([{
     name: 'Ill Beats',
     date: 20170823,
-    tracks: 'Madonna- Die Another Day, DJ Shadow- Organ Donor, Ice Cube- It Was A Good Day',
+    tracks: [],
     createdBy: users[0]
   }, {
     name: 'Classics',
     date: 20170823,
-    tracks: 'Elvis Presley- A Little Less Conversation, Destinys Child- independant Woman, TLC- No Scrubs, Hanson- Mmmbop',
+    tracks: [],
     createdBy: users[0]
   }]);
 })

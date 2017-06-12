@@ -3,12 +3,32 @@
 <ul class="col-lg-4">
   <li><h2><%= set.name %></h2></li>
   <li><h3><%= set.date %></h3></li>
-  <li><p><%=set.tracks%></p></li>
   <li><p><%=set.createdBy.username %></p></li>
 </ul>
+<h4>Tracks</h4>
+<section>
+<% set.tracks.forEach((track) => { %>
+  <p><%= track.content %></p>
+  <% if(locals.isLoggedIn) { %>
+    <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete</button>
+    </form>
+  <% } %>
+<% }) %>
+</section>
 <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-<a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
-          <form method="POST" action="/sets/<%= set.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger">Delete</button>
+    <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
+    <form method="POST" action="/sets/<%= set.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger">Delete</button>
+    </form>
+  <section>
+    <h4>Add a Track</h4>
+  <form method="POST" action="/sets/<%= set.id %>/tracks">
+    <textarea name="content" id="content" placeholder="track"></textarea>
+    <button class="button">Add track</button>
+  </form>
+</section>
+
 <% } %>
