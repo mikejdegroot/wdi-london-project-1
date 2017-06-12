@@ -4,6 +4,7 @@ const Set = require('../models/set');
 function setsIndex(req, res, next) {
   Set
     .find()
+    .populate('createdBy')
     .exec()
     .then((sets) => res.render('sets/index', { sets }))
     .catch(next);
@@ -14,6 +15,9 @@ function setsNew(req, res) {
 }
 
 function setsCreate(req, res, next) {
+
+  req.body.createdBy = req.user;
+
   Set
   .create(req.body)
   .then(() => res.redirect('/sets'))
@@ -23,6 +27,7 @@ function setsCreate(req, res, next) {
 function setsShow(req, res, next) {
   Set
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((set) => {
       if(!set) return res.status(404).render('statics/404');

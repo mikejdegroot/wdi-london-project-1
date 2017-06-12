@@ -10,6 +10,8 @@ const routes          = require('./config/routes');
 const bodyParser      = require('body-parser');
 const authenticateUser= require('./lib/authenticateUser');
 const flash           = require('express-flash');
+const customResponses = require('./lib/customResponses');
+const errorHandler    = require('./lib/errorHandler');
 
 const { port, dbURI, secret } = require('./config/environment');
 mongoose.connect(dbURI);
@@ -29,6 +31,7 @@ app.use(session( {
   saveUninitialize: false
 }));
 app.use(flash());
+app.use(customResponses);
 app.use(methodOverride(function (req) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     const method = req.body._method;
@@ -37,6 +40,7 @@ app.use(methodOverride(function (req) {
   }
 }));
 app.use(authenticateUser);
+app.use(errorHandler);
 
 
 

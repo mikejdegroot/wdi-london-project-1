@@ -4,9 +4,11 @@
   <li><h2><%= set.name %></h2></li>
   <li><h3><%= set.date %></h3></li>
   <li><p><%=set.tracks%></p></li>
-  <li><p><%=set.createdBy %></p></li>
+  <li><p><%=set.createdBy.username %></p></li>
 </ul>
+<% if(locals.isLoggedIn && set.belongsTo(user)) { %>
 <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
           <form method="POST" action="/sets/<%= set.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button class="btn btn-danger">Delete</button>
+<% } %>
