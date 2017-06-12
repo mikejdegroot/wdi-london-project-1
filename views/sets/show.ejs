@@ -9,7 +9,7 @@
 <section>
 <% set.tracks.forEach((track) => { %>
   <p><%= track.content %></p>
-  <% if(locals.isLoggedIn) { %>
+  <% if(locals.isLoggedIn && track.belongsTo(user)) { %>
     <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
       <input type="hidden" name="_method" value="DELETE">
       <button>Delete</button>
@@ -18,7 +18,7 @@
 <% }) %>
 </section>
 <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-    <a href="/set/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
+    <a href="/sets/<%= set.id %>/edit" class="btn btn-primary">Edit</a>
     <form method="POST" action="/sets/<%= set.id %>">
         <input type="hidden" name="_method" value="DELETE">
         <button class="btn btn-danger">Delete</button>

@@ -7,7 +7,7 @@ const trackSchema = new mongoose.Schema({
   timestamps: true
 });
 
-trackSchema.methods.belongsTo = function belongsTo(user) {
+trackSchema.methods.belongsTo = function trackBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
 };
@@ -20,8 +20,9 @@ const setSchema = new mongoose.Schema({
   //tells mongoose that the object id will be the user id
 });
 
-setSchema.methods.belongsTo = function belongsTo(user) {
-  return this.createdBy.id === user.id;
+setSchema.methods.belongsTo = function setBelongsTo(user) {
+  if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
+  return user.id === this.createdBy.toString();
 };
 
 module.exports = mongoose.model('Set', setSchema);

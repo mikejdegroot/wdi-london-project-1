@@ -7,6 +7,14 @@ function staticsIndex(req, res) {
     .then((users) => res.render('statics/index', { users })); //render the users on the statics index
 }
 
+function statics404(req, res) {
+  User                           //when index is called for by the router, find all users in the db
+    .find()
+    .exec()
+    .then(() => res.render('statics/404')); //render the users on the statics index
+}
+
 module.exports = {
-  index: staticsIndex
+  index: staticsIndex,
+  notFound: statics404
 };

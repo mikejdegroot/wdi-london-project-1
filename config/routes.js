@@ -22,7 +22,7 @@ router.route('/sets/:id')
 .put(secureRoute, set.update)
 .delete(secureRoute, set.delete);
 
-router.route('/set/:id/edit')
+router.route('/sets/:id/edit')
 .get(secureRoute, set.edit);
 
 router.route('/register')
@@ -49,6 +49,9 @@ router.route('/sets/:id/tracks')
 
 router.route('/sets/:id/tracks/:trackId')
   .delete(secureRoute, set.deleteTrack);
+
+router.route('*')
+  .get(statics.notFound);
 
 
 module.exports = router;

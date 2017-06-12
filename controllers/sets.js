@@ -3,11 +3,11 @@ const Set = require('../models/set');
 
 function setsIndex(req, res, next) {
   Set
-    .find()
-    .populate('createdBy')
-    .exec()
-    .then((sets) => res.render('sets/index', { sets }))
-    .catch(next);
+  .find()
+  .populate('createdBy')
+  .exec()
+  .then((sets) => res.render('sets/index', { sets }))
+  .catch(next);
 }
 
 function setsNew(req, res) {
@@ -26,25 +26,29 @@ function setsCreate(req, res, next) {
 
 function setsShow(req, res, next) {
   Set
+  .findById(req.params.id)
+  .populate('createdBy tracks.createdBy')
+  .exec()
+  .then((set) => {
+    if(!set) return res.status(404).render('statics/404');
+    res.render('sets/show', { set });
+  })
+  .catch(next);
+}
+
+function setsEdit(req, res, next) {
+  console.log(req.user);
+  Set
     .findById(req.params.id)
-    .populate('createdBy tracks.createdBy')
     .exec()
     .then((set) => {
-      if(!set) return res.status(404).render('statics/404');
-      res.render('sets/show', { set });
+      if(!set) return res.redirect();
+      if(!set.belongsTo(req.user)) return res.unauthorized(`/sets/${set.id}`, 'You do not have permission to edit that resource');
+      return res.render('sets/edit', { set });
     })
     .catch(next);
 }
 
-function setsEdit(req, res, next) {
-  Set
-  .findById(req.params.id)
-  .then((set) => {
-    if(!set) return res.status(404).render('statics/404');
-    res.render('sets/edit', {set});
-  })
-  .catch(next);
-}
 
 function setsUpdate(req, res, next) {
   Set
@@ -76,32 +80,32 @@ function createTrackRoute(req, res, next) {
   req.body.createdBy = req.user;
 
   Set
-    .findById(req.params.id)
-    .exec()
-    .then((set) => {
-      if(!set) return res.notFound();
+  .findById(req.params.id)
+  .exec()
+  .then((set) => {
+    if(!set) return res.notFound();
 
-      set.tracks.push(req.body); // create an embedded record
-      return set.save();
-    })
-    .then((set) => res.redirect(`/sets/${set.id}`))
-    .catch(next);
+    set.tracks.push(req.body); // create an embedded record
+    return set.save();
+  })
+  .then((set) => res.redirect(`/sets/${set.id}`))
+  .catch(next);
 }
 
 function deleteTrackRoute(req, res, next) {
   Set
-    .findById(req.params.id)
-    .exec()
-    .then((set) => {
-      if(!set) return res.notFound();
-      // get the embedded record by it's id
-      const comment = set.tracks.id(req.params.trackId);
-      comment.remove();
+  .findById(req.params.id)
+  .exec()
+  .then((set) => {
+    if(!set) return res.notFound();
+    // get the embedded record by it's id
+    const comment = set.tracks.id(req.params.trackId);
+    comment.remove();
 
-      return set.save();
-    })
-    .then((set) => res.redirect(`/sets/${set.id}`))
-    .catch(next);
+    return set.save();
+  })
+  .then((set) => res.redirect(`/sets/${set.id}`))
+  .catch(next);
 }
 
 module.exports = {
