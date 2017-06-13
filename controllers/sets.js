@@ -53,6 +53,7 @@ function setsEdit(req, res, next) {
     return res.render('sets/edit', { set });
   })
   .catch(next);
+
 }
 
 
@@ -60,16 +61,24 @@ function setsUpdate(req, res, next) {
   Set
   .findById(req.params.id) //find the set with the id contained in thr request
   .then((set) => { //then, on that found id
-    if(!set) return res.redirect(); //if the id isnt valid, return 404
+    if(!set) return res.redirect();
     for(const field in req.body) { //for every field in req body
       set[field] = req.body[field]; //replace the correspndng field in the db with that in the req
     }
     return set.save(); //save the edited db entry
   })
-  
-  .then((set) => res.redirect(`/sets/${set.id}`)) //redirect to the item id
-  .catch(next); //move on
+  .then((set) => res.redirect(`/sets/${set.id}`))
+  .catch((err) => {
+    if(err.name === 'ValidationError') {
+      return res.badRequest(`/sets/${req.params.id}/edit`, err.toString()); //must be req params id!!!!!!!
+    }
+    next(err);
+  });
+
+
+
 }
+
 
 function setsDelete(req, res, next) {
   Set

@@ -1,27 +1,28 @@
 $(() => {
+
+  console.log('JS Loaded');
   $.validator.addMethod(
-        'regex',
-        function(value, element, regexp) {
-          const re = new RegExp(regexp);
-          return this.optional(element) || re.test(value);
-        },
-        'Please check your input.'
-);
+    'regex',
+    function(value, element, regexp) {
+      const re = new RegExp(regexp);
+      return this.optional(element) || re.test(value);
+    },
+    'Please enter date in format DD/MM/YYYY'
+  );
 
   $.validator.setDefaults({
     errorClass: 'error-throw',
     highlight: function(element) {
       $(element)
-        .closest('.form-control')
-        .addClass('has-error');
+      .closest('.form-control')
+      .addClass('has-error');
     },
     unhighlight: function(element) {
       $(element)
-        .closest('.form-control')
-        .removeClass('has-error');
+      .closest('.form-control')
+      .removeClass('has-error');
     }
   });
-  console.log('JS');
   $('.submit-form').validate({
     rules: {
       username: {
@@ -42,7 +43,7 @@ $(() => {
       },
       date: {
         required: true,
-        equalTo: /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/ //this needs fixing, does not recognise the regex
+        regex: /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/
       }
     },
     messages: {
@@ -61,5 +62,9 @@ $(() => {
     }
 
   });
+
+
+
+
 
 });
