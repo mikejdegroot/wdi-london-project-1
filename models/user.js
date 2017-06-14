@@ -4,8 +4,9 @@ const bcrypt   = require('bcrypt');
 //a framework for what each user in dbshould look like
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true},
-  email: {type: String, required: true},
-  password: {type: String, required: true}
+  email: {type: String},
+  password: {type: String},
+  facebookId: {type: Number, required: true}
 });
 
 userSchema.pre('save', function hashPassword(next) { //before the save perform the hash password function
@@ -24,9 +25,14 @@ setPasswordConfirmation(passwordConfirmation) { //sets the password confir to be
   this._passwordConfirmation = passwordConfirmation;
 });
 
-userSchema.pre('validate', function checkPassword(next) { //checks to see if passwords match
-  if (this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match'); //if the passwords do not match return as invalid
-  next(); //move on
+userSchema.pre('validate', function checkPassword(next) {
+  if(!this.password && !this.facebookId) {
+    this.invalidate('password', 'required');
+  }
+  if(this.password && this._passwordConfirmation !== this.password){
+    this.invalidate('passwordConfirmation', 'does not match');
+  }
+  next();
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {

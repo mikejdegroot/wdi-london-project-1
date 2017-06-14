@@ -40,6 +40,7 @@
     "flash": "^1.1.0",
     "method-override": "^2.3.9",
     "mongoose": "^4.10.5",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "request-promise": "^4.2.1"
   }
 }

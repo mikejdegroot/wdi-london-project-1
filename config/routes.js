@@ -4,8 +4,14 @@ const set          =  require('../controllers/sets');
 const statics      =  require('../controllers/statics');
 const registrations=  require('../controllers/registrations');
 const secureRoute  =  require('../lib/secureRoute');
+const oauth        = require('../controllers/oauth');
+const tracks        = require('../controllers/tracks');
 
+router.route('/tracks')
+.get(tracks.proxy);
 
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.route('/')
 .get(statics.index);
