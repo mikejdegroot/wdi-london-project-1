@@ -89,8 +89,17 @@ function accessProxy(req, res) { //function requests the token from spotify
               json: true
             }).then((response) => {
               res.json(response);
-            });
+              let danceArray = [];
 
+              for(let i = 0; i < response.audio_features.length; i++) {
+                // console.log(response.audio_features[i].danceability);
+                danceArray.push(response.audio_features[i].danceability);
+              }
+              let x = originalDance;
+              let closest = danceArray.sort( (a, b) => Math.abs(x - a) - Math.abs(x - b) )[0];
+              console.log(originalDance);
+              console.log(closest);
+            });
           });
 
 
