@@ -1,7 +1,8 @@
 $(() => {
 
-  const $getSong = $('#getsong');
-  const $currentSong = $('#content');
+  const $getSong      = $('#getsong');
+  const $currentSong  = $('#content');
+  const $result       = $('#result');
 
   console.log('JS Loaded');
   $.validator.addMethod(
@@ -77,6 +78,8 @@ $(() => {
       }
     }).done((response)=> {
       console.log(response);
+      $result.text(`${response.newArtist} ${response.newTrack} `);
+
     });
   });
 
