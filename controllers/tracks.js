@@ -1,8 +1,9 @@
 const rp    = require('request-promise');
 const api   = require('../config/api');
 // const SpotifyWebApi = require('../');
-let accessToken = null;
-let originalDance = null;
+let accessToken     = null;
+let originalDance   = null;
+let matched         = null;
 
 function accessProxy(req, res) { //function requests the token from spotify
   rp({
@@ -27,7 +28,7 @@ function accessProxy(req, res) { //function requests the token from spotify
       },
       json: true,
       qs: {
-        q: 'Beyonce 7/11',
+        q: 'Beyonce 7/11', ///change this to be the output of the add track form on the show page
         type: 'track',
         limit: 1
       }
@@ -80,72 +81,58 @@ function accessProxy(req, res) { //function requests the token from spotify
             const trackFive   = response.tracks[4].id;
             console.log(trackOne + trackTwo + trackThree + trackFour + trackFive);
 
-            rp({
+            rp({ // searches for the audio features of those top 5 tracks
               url: `https://api.spotify.com/v1/audio-features/?ids=${trackOne},${trackTwo},${trackThree},${trackFour},${trackFive}`,
               method: 'GET',
               headers: {
                 'Authorization': `Bearer ${accessToken}`
               },
               json: true
-            }).then((response) => {
-              res.json(response);
+            }).then((response) => { // cycle through the retuned arr and push up the dncblty attribute to new arr
               let danceArray = [];
 
               for(let i = 0; i < response.audio_features.length; i++) {
                 // console.log(response.audio_features[i].danceability);
                 danceArray.push(response.audio_features[i].danceability);
               }
-              let x = originalDance;
+
+              let x = originalDance; //compare the value of each number to orig trk and store closest in var
               let closest = danceArray.sort( (a, b) => Math.abs(x - a) - Math.abs(x - b) )[0];
               console.log(originalDance);
               console.log(closest);
+
+              //cycle through the top tracks array and pull out the one with the danceability of the above value,
+
+              for(let i = 0; i < response.audio_features.length; i++) {
+                if(response.audio_features[i].danceability === closest) {
+                  matched = response.audio_features[i].id;
+                }
+              }
+            }).then(() => { //connect to spoty one more time to return the details of the selected track using the id.
+              rp({
+                url: `https://api.spotify.com/v1/tracks/${matched}`,
+                method: 'GET',
+                headers: {
+                  'Authorization': `Bearer ${accessToken}`
+                },
+                json: true
+              })
+              .then((response) => {
+                res.json(response);
+                console.log(response.artists[0].name);
+                console.log(response.name);
+                let newArtist = response.artists[0].name; //store the output in variables
+                let newTrack  = response.name;
+              });
             });
           });
-
-
         });
-
       });
-
-
     });
-    // res.json(token);
   });
 }
 
-// accessProxy();
 
 module.exports = {
   proxy: accessProxy
 };
-
-
-/**
- * This example retrives an access token using the Client Credentials Flow. It's well documented here:
- * https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow
- */
-
-/*
- * https://developer.spotify.com/spotify-web-api/using-scopes/
- */
-
- /**
- * Set the credentials given on Spotify's My Applications page.
- * https://developer.spotify.com/my-applications
-//  */
-// var spotifyApi = new SpotifyWebApi({
-//   clientId: api.spotify.clientId,
-//   clientSecret: api.spotify.clientSecret,
-// });
-//
-// // Retrieve an access token
-// spotifyApi.clientCredentialsGrant()
-//   .then(function(data) {
-//     console.log('The access token expires in ' + data.body['expires_in']);
-//     console.log('The access token is ' + data.body['access_token']);
-//
-//     // Save the access token so that it's used in future calls
-//     spotifyApi.setAccessToken(data.body['access_token']);
-//   }, function(err) {
-//     console.log('Something went wrong when retrieving an access token', err.message);
-//   });
