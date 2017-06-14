@@ -57,7 +57,7 @@ function accessProxy(req, res) { //function requests the token from spotify
             'Authorization': `Bearer ${accessToken}`
           },
           json: true
-        }).then((response) => {
+        }).then((response) => { // chooses one of the related artists randomly and returns their top tracks
           // console.log(response.artists.length); //20 artists are returned
           const numberGen = (Math.floor(Math.random()*20));
           const relatedArt = response.artists[numberGen].id;
@@ -69,13 +69,28 @@ function accessProxy(req, res) { //function requests the token from spotify
               'Authorization': `Bearer ${accessToken}`
             },
             json: true,
-            limit: 5,
             qs: {
               'country': 'GB'
             }
-          }).then((response) => {
-            console.log(response.tracks[0].name);
-            res.json(response);
+          }).then((response) => { // picks the top 5 tracks out
+            const trackOne    = response.tracks[0].id;
+            const trackTwo    = response.tracks[1].id;
+            const trackThree  = response.tracks[2].id;
+            const trackFour   = response.tracks[3].id;
+            const trackFive   = response.tracks[4].id;
+            console.log(trackOne + trackTwo + trackThree + trackFour + trackFive);
+
+            rp({
+              url: `https://api.spotify.com/v1/audio-features/?ids=${trackOne},${trackTwo},${trackThree},${trackFour},${trackFive}`,
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${accessToken}`
+              },
+              json: true
+            }).then((response) => {
+              res.json(response);
+            });
+
           });
 
 
