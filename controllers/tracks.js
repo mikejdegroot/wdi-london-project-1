@@ -1,6 +1,6 @@
 const rp    = require('request-promise');
 const api   = require('../config/api');
-// const SpotifyWebApi = require('../');
+
 let accessToken     = null;
 let originalDance   = null;
 let matched         = null;
@@ -28,7 +28,7 @@ function accessProxy(req, res) { //function requests the token from spotify
       },
       json: true,
       qs: {
-        q: 'Beyonce 7/11', ///change this to be the output of the add track form on the show page
+        q: `${req.query.keywords}`, ///change this to be the output of the add track form on the show page
         type: 'track',
         limit: 1
       }
@@ -118,11 +118,9 @@ function accessProxy(req, res) { //function requests the token from spotify
                 json: true
               })
               .then((response) => {
-                res.json(response);
-                console.log(response.artists[0].name);
-                console.log(response.name);
                 let newArtist = response.artists[0].name; //store the output in variables
                 let newTrack  = response.name;
+                res.json({newArtist, newTrack});
               });
             });
           });

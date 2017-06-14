@@ -11,7 +11,7 @@ router.route('/tracks')
 .get(tracks.proxy);
 
 router.route('/oauth/facebook')
-  .get(oauth.facebook);
+.get(oauth.facebook);
 
 router.route('/')
 .get(statics.index);

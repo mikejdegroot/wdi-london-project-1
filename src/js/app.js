@@ -1,5 +1,8 @@
 $(() => {
 
+  const $getSong = $('#getsong');
+  const $currentSong = $('#content');
+
   console.log('JS Loaded');
   $.validator.addMethod(
     'regex',
@@ -63,10 +66,18 @@ $(() => {
 
   });
 
+  $getSong.on('click', ()=> {
+    const keywords = $currentSong.val();
 
-  
-
-
-
+    $.ajax({
+      url: '/tracks',
+      method: 'GET',
+      data: {
+        keywords
+      }
+    }).done((response)=> {
+      console.log(response);
+    });
+  });
 
 });
