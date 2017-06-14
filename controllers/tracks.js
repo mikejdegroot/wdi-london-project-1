@@ -61,9 +61,7 @@ function accessProxy(req, res) { //function requests the token from spotify
           // console.log(response.artists.length); //20 artists are returned
           const numberGen = (Math.floor(Math.random()*20));
           const relatedArt = response.artists[numberGen].id;
-          console.log(relatedArt);
-        }).then((relatedArt)=> {
-          // console.log(relatedArt);
+          console.log(response.artists[numberGen].name);
           rp({
             url: `https://api.spotify.com/v1/artists/${relatedArt}/top-tracks`,
             method: 'GET',
@@ -71,11 +69,15 @@ function accessProxy(req, res) { //function requests the token from spotify
               'Authorization': `Bearer ${accessToken}`
             },
             json: true,
+            limit: 5,
             qs: {
               'country': 'GB'
             }
+          }).then((response) => {
+            console.log(response.tracks[0].name);
+            res.json(response);
           });
-          res.json(response);
+
 
         });
 
