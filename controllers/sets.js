@@ -105,7 +105,13 @@ function createTrackRoute(req, res, next) {
     return set.save();
   })
   .then((set) => res.redirect(`/sets/${set.id}`))
-  .catch(next);
+  .catch((err) => {
+    if(err.name === 'ValidationError') {
+      return res.badRequest(`/sets/${req.params.id}`, err.toString()); //must be req params id!!!!!!!
+    }
+    next(err);
+  });
+
 }
 
 function deleteTrackRoute(req, res, next) {

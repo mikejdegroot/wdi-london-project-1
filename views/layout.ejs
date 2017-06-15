@@ -5,15 +5,17 @@
     <title>WDI Project 1</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
-    <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-      <% include ./partials/_navbar %>
-      <% for (const type in messages) { %>
-        <p class="alert alert-<%= type %>"><%= messages[type] %></p>
-      <% } %>
-      <%- body %>
+    <% include ./partials/_navbar %>
+    <% for (const type in messages) { %>
+      <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+    <% } %>
+    <%- body %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <script async defer type="text/javascript" src="https://apis.google.com/js/client.js?onload=gapiReady"></script>
   </body>
 </html>

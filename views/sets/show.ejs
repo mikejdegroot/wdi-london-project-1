@@ -32,15 +32,18 @@
 <section class="colomns col-lg-3">
     <h4>What are you listening to?</h4>
   <form method="POST" action="/sets/<%= set.id %>/tracks">
-    <textarea name="content" id="content" placeholder="What's on??"></textarea>
+    <textarea name="content" id="content" placeholder="What's on??"><%= set.tracks[set.tracks.length-1].content %></textarea>
     <button class="btn">Add to set!</button>
     <button type="button"class="btn" id="getsong">Get Song!</button>
+    <button type="button"class="btn" id="play">Play!</button>
   </form>
 </section>
 <section class="colomns col-lg-3">
     <h4>Up Next...</h4>
     <span id="result"></span>
-</section>
     <button class="btn cue"> <<< cue </button>
+    <div class="moviediv"></div>
+</section>
+
 
 <% } %>
