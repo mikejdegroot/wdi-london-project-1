@@ -1,10 +1,16 @@
-<h1>Sets</h1>
 
-<ul>
-  <% sets.forEach((set) => { %>
-    <li>
-    <a href="/sets/<%= set.id %>"><%= set.name %></h3></a>
-    </li>
-  <% }) %>
-  <a href="/sets/new" class="btn btn-primary">New</a>
-</ul>
+<section class="row">
+  <div class="col-lg-10 sets-index-main">
+    <h1>Sets</h1>
+    <ul>
+          <% sets.forEach((set) => { %>
+          <li >
+          <a class="button-set" href="/sets/<%= set.id %>"><%=set.name%></h3></a>
+          </li>
+        <% }) %>
+    </ul>
+    <div class="spanny">
+      <span><a href="/sets/new" class="btn btn-primary">New</a></span>
+    </div>
+  </div>
+</section>

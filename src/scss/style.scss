@@ -3,12 +3,13 @@
 * {
   font-family: 'Rajdhani', sans-serif;
   margin: 0 auto;
+  font-weight: bold;
 }
 
 body {
   background-color: #1B264F;
   margin-top: 20px;
-  color: #65AFFF;
+  color: black;
 }
 
 header {
@@ -44,7 +45,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000500;
+    color: #D98324;
   }
 }
 
@@ -54,7 +55,9 @@ header {
   border-radius: 3px;
   padding: 10px;
   margin: 6px;
-  color: #65AFFF;
+  color: #D98324;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .edit-button {
@@ -68,14 +71,16 @@ header {
     height: 1000px;
     background-color: #335C81;
     border-radius: 10px;
+    margin-top: 40px;
 
     h4{
+      font-size: 40px;
       padding: 10px;
     }
 
     .ps{
-      display: inline;
-      font-size: 15px;
+      display: block;
+      font-size: 22px;
       padding: 10px;
 
     }
@@ -90,13 +95,22 @@ header {
 
     ul {
       list-style: none;
+      margin-left: -30px;
+
       .setname {
-        font-size: 40px;
+        font-size: 50px;
+        padding: 10px;
+      }
+      .setdate {
+        font-size: 20px;
+      }
+      .setuser {
+        font-size: 20px;
       }
     }
     .button-styles {
       display: block;
-      width: 48px;
+      width: 70px;
     }
 
   }
@@ -108,10 +122,14 @@ header {
     height: 180px;
     width: 100%;
     font-size: 30px;
+
     h4 {
       font-size: 25px;
       padding: 10px;
+      color: #D98324;
+
     }
+
     #content {
     width: 80%;
     margin: 10px;
@@ -120,18 +138,27 @@ header {
     }
 
   }
+
+
   .upnext {
     margin-top: 70px;
+
+    .up-next {
+      color: #D98324;
+    }
+
     .suggestion {
       height: 200px;
+
       #result {
         font-size: 50px;
         color: #D98324;
       }
-    .cue-div{
-      position: relative;
-      top: 600px;
-    }
+
+      .cue-div{
+        position: relative;
+        top: 600px;
+      }
     }
 
     .movie-container {
@@ -146,14 +173,98 @@ header {
     }
 
   }
+}
 
+.form-div {
+  background-color: #335C81;
+  border-radius: 10px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  .form-control {
+    width: 90%;
+    font-size: 25px;
+  }
+  .form-body {
+    height: 260px;
 
+    .login-div {
+      margin-top: 70px;
+      position: relative;
+      }
+  }
+
+  .button-styles {
+    font-size: 20px;
+  }
 
 }
+
+.sets-index-main {
+  background-color: #335C81;
+  border-radius: 10px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+
+  ul {
+    list-style: none;
+
+    li {
+      height: 100px;
+      display: inline;
+      a {
+        text-decoration: none;
+        color: #D98324;
+        @extend.button-styles;
+        float: left;
+      }
+
+    }
+
+  }
+
+}
+.button-set {
+  float: left;
+}
+
+.reg-form {
+  font-size: 20px;
+  padding: 15px;
+  height: 550px;
+
+  .form-control {
+    margin: 5px;
+  }
+  .login-reg-div {
+    margin-top: 150px;
+    position: relative;
+    }
+}
+
+.prof-btn {
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
 
 .has-error {
   border-color: crimson;
 }
 .error-throw{
   color: crimson;
+  font-size: 20px;
 }

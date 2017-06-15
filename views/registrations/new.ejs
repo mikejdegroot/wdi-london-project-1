@@ -1,22 +1,28 @@
-<h1>new registration</h1>
-
-<form method="POST" action="/register" class="col-lg-4 submit-form">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" class="form-control">
+<div class="row">
+  <div class="col-lg-4 form-div reg-form">
+    <h1>New Registration</h1>
+      <form method="POST" action="/register" class="submit-form">
+    <div class="form-body">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="passwordConfirmation">Password Confirmation</label>
+        <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control" >
+      </div>
+    </div>
+    <div class="login-reg-div">
+      <button class="button-styles">Register</button>
+    </div>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control" >
-  </div>
-
-  <button class="btn btn-primary">Register</button>
-</form>
+</div>
