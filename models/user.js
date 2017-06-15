@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   username: {type: String, required: true},
   email: {type: String},
   password: {type: String},
-  facebookId: {type: Number, required: true}
+  facebookId: {type: Number}
 });
 
 userSchema.pre('save', function hashPassword(next) { //before the save perform the hash password function
