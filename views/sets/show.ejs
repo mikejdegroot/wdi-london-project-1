@@ -1,6 +1,18 @@
-<h1>set</h1>
-<!-- show each db item in more detail, uses the id of the item to populate the html, negating the need for a page per item, very dry-->
-<section class="colomns col-lg-3">
+<div class="row show-page-main">
+<section class="colomns col-lg-3 set-info">
+  <aside class="setlist">
+    <h4>Set List</h4>
+  <% set.tracks.forEach((track) => { %>
+    <p><%= track.content %></p>
+    <% if(locals.isLoggedIn && track.belongsTo(user)) { %>
+      <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="track">Delete</button>
+      </form>
+    <% } %>
+  <% }) %>
+  </aside>
+  <h1>set</h1>
   <ul>
     <li><h2 class="setname"><%= set.name %></h2></li>
     <li><h3 class="setdate"><%= set.date %></h3></li>
@@ -14,36 +26,24 @@
   </form>
    <% } %>
 </section>
-
-<h4>Set List</h4>
-<section class="colomns col-lg-3">
-<% set.tracks.forEach((track) => { %>
-  <p><%= track.content %></p>
-  <% if(locals.isLoggedIn && track.belongsTo(user)) { %>
-    <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn">Delete</button>
-    </form>
-  <% } %>
-<% }) %>
-</section>
-
     <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-<section class="colomns col-lg-3">
+<section class="colomns col-lg-3 nowplaying">
     <h4>What are you listening to?</h4>
   <form method="POST" action="/sets/<%= set.id %>/tracks">
-    <textarea name="content" id="content" placeholder="What's on??"><%= set.tracks[set.tracks.length-1].content %></textarea>
-    <button class="btn">Add to set!</button>
-    <button type="button"class="btn" id="getsong">Get Song!</button>
-    <button type="button"class="btn" id="play">Play!</button>
+    <input type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks[set.tracks.length-1].content %>"></input>
+    <button type="button" >Add to set!</button>
+    <button type="button" id="getsong">Get Song!</button>
+    <button type="button" id="play">Play!</button>
   </form>
 </section>
-<section class="colomns col-lg-3">
+<section class="colomns col-lg-3 upnext">
     <h4>Up Next...</h4>
+    <div class="suggestion">
     <span id="result"></span>
+    </div>
     <button class="btn cue"> <<< cue </button>
     <div class="moviediv"></div>
 </section>
 
-
 <% } %>
+</div>
