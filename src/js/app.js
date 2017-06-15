@@ -110,9 +110,8 @@ function gapiReady() { // eslint-disable-line no-unused-vars
 
 function searchYoutube() {
   console.log('click');
-  console.log(gapi.client.search);
   gapi.client.youtube.search.list({
-    q: encodeURIComponent($currentSong.val()).replace(/%20/g, '+'),
+    q: $currentSong.val(),
     part: 'snippet',
     maxResults: 1,
     order: 'viewCount',
