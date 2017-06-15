@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: white;
-  margin-top: 60px;
+  background-color: #1B264F;
+  margin-top: 20px;
 }
 
 header {
@@ -47,10 +47,29 @@ header {
   }
 }
 
-
-
-
 .show-page-main {
+
+  .setlist {
+    font-size: 25px;
+    height: 1000px;
+    background-color: #335C81;
+
+    .ps{
+      display: inline;
+
+    }
+    button {
+      background-color: #1B264F;
+      border-style: none;
+      border-radius: 3px;
+      padding: 10px;
+      display: inline;
+      float: right;
+
+    }
+
+  }
+
   .set-info {
     margin-top: 70px;
     ul {
@@ -61,10 +80,6 @@ header {
     }
   }
 
-  .setlist {
-    margin-top: 70px;
-    font-size: 15px;
-  }
 
   .nowplaying {
     margin-top: 70px;

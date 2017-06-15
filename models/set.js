@@ -25,4 +25,9 @@ setSchema.methods.belongsTo = function setBelongsTo(user) {
   return user.id === this.createdBy.toString();
 };
 
+setSchema.virtual('lastTrack')
+  .get(function getLastTrack() {
+    return this.tracks.splice(-1)[0];
+  });
+
 module.exports = mongoose.model('Set', setSchema);
