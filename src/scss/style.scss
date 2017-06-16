@@ -7,9 +7,9 @@
 }
 
 body {
-  background-color: #1B264F;
+  background-color: black;
   margin-top: 20px;
-  color: black;
+  color: DeepPink;
 }
 
 header {
@@ -28,7 +28,7 @@ header {
       a {
         text-decoration: none;
         padding: 20px 50px;
-        color: #D98324;
+        color: #F75C03;
       }
     }
   }
@@ -45,17 +45,17 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #D98324;
+    color: #F75C03;
   }
 }
 
 .button-styles {
-  background-color: #1B264F;
+  background-color: black;
   border-style: none;
   border-radius: 3px;
   padding: 10px;
   margin: 6px;
-  color: #D98324;
+  color: #F75C03;
   text-decoration: none;
   font-size: 20px;
 }
@@ -69,7 +69,7 @@ header {
   .setlist {
     font-size: 25px;
     height: 1000px;
-    background-color: #335C81;
+    background-color: #1B264F;
     border-radius: 10px;
     margin-top: 40px;
 
@@ -89,7 +89,7 @@ header {
 
   .set-title {
     margin-top: 60px;
-    background-color: #335C81;
+    background-color: #1B264F;
     border-radius: 10px;
     height: 240px;
 
@@ -117,7 +117,7 @@ header {
 
   .nowplaying {
     margin-top: 70px;
-    background-color: #335C81;
+    background-color: #1B264F;
     border-radius: 10px;
     height: 180px;
     width: 100%;
@@ -126,7 +126,7 @@ header {
     h4 {
       font-size: 25px;
       padding: 10px;
-      color: #D98324;
+      color: #F75C03;
 
     }
 
@@ -144,7 +144,7 @@ header {
     margin-top: 70px;
 
     .up-next {
-      color: #D98324;
+      color: #F75C03;
     }
 
     .suggestion {
@@ -152,7 +152,7 @@ header {
 
       #result {
         font-size: 50px;
-        color: #D98324;
+        color: #F75C03;
       }
 
       .cue-div{
@@ -165,7 +165,7 @@ header {
       height: 400px;
       overflow: auto;
       margin-top: 20px;
-      background-color: #335C81;
+      background-color: #1B264F;
       .moviediv {
         height: 200px;
         width: 300px;
@@ -176,7 +176,7 @@ header {
 }
 
 .form-div {
-  background-color: #335C81;
+  background-color: #1B264F;
   border-radius: 10px;
   height: 400px;
   position: absolute;
@@ -204,7 +204,7 @@ header {
 }
 
 .sets-index-main {
-  background-color: #335C81;
+  background-color: #1B264F;
   border-radius: 10px;
   height: 400px;
   position: absolute;
@@ -221,9 +221,10 @@ header {
       display: inline;
       a {
         text-decoration: none;
-        color: #D98324;
+        color: #F75C03;
         @extend.button-styles;
         float: left;
+        
       }
 
     }
@@ -262,9 +263,9 @@ header {
 
 
 .has-error {
-  border-color: crimson;
+  border-color: DeepPink;
 }
 .error-throw{
-  color: crimson;
+  color: DeepPink;
   font-size: 20px;
 }
