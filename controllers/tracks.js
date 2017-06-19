@@ -20,7 +20,7 @@ function accessProxy(req, res) { //function requests the token from spotify
   })
   .then((token) => { //uses the token to request a query search for song
     accessToken = token.access_token;
-    rp({
+    return rp({
       url: 'https://api.spotify.com/v1/search',
       method: 'GET',
       headers: {
@@ -33,6 +33,7 @@ function accessProxy(req, res) { //function requests the token from spotify
         limit: 1
       }
     })
+  })
     .then((response) => { //stores the response in track and artist ID consts
       // console.log(response);
       const trackId = response.tracks.items[0].id;
