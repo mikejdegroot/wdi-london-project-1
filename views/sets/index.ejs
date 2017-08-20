@@ -1,16 +1,15 @@
-
-<section class="row">
-  <div class="col-lg-10 sets-index-main">
+<section class="columns">
+  <div class="column is-10 is-offset-1 sets-index-main">
     <h1>Sets</h1>
-    <ul>
-          <% sets.forEach((set) => { %>
-          <li >
-          <a class="button-set" href="/sets/<%= set.id %>"><%=set.name%></h3></a>
-          </li>
-        <% }) %>
-    </ul>
     <div class="spanny">
-      <span><a href="/sets/new" class="button-styles new-set">New</a></span>
+      <a href="/sets/new" class="button is-primary new-set">New</a>
     </div>
+    <ul>
+      <% sets.forEach((set) => { %>
+      <li >
+      <a class="button is-info" href="/sets/<%= set.id %>"><%=set.name%></h3></a>
+      </li>
+      <% }) %>
+    </ul>
   </div>
 </section>

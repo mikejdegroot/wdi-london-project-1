@@ -124,7 +124,7 @@ function searchYoutube() {
 function getOutput(item) {
 
   var output = `
-  <iframe width="300" height="200" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+  <iframe width="345" height="200" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
   `;
 
   return output;

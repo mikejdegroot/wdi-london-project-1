@@ -1,7 +1,7 @@
 // @import "bootstrap/bootstrap-grid";
-$primary: #272727;
+$primary: rgba(0, 0, 0, 0.95);
 $secondary: black;
-$tertiary: #111933;
+$tertiary: #FF0066;
 
 * {
   font-family: 'Rajdhani', sans-serif;
@@ -13,6 +13,12 @@ $tertiary: #111933;
   text-align: center;
 }
 
+.button-styles {
+  a {
+    width: 30%;
+    margin-left: 8px;
+  }
+}
 body {
   margin-top: 20px;
   height: 100vh;
@@ -51,14 +57,22 @@ header {
     color: #F75C03;
   }
 }
+section {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/turntable.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 #setShowPage {
   .setList {
     background-color: $primary;
     font-size: 25px;
     height: 500px;
-    border-radius: 5px;
+    border-radius: 0 20px;
     margin-top: 100px;
+    overflow: auto;
     h4{
       @extend .header-styles;
     }
@@ -72,7 +86,7 @@ header {
   .nowPlaying {
     margin-top: 88px;
     background-color: $primary;
-    border-radius: 10px;
+    border-radius: 0 20px;
     height: 200px;
     h4 {
       @extend .header-styles
@@ -88,36 +102,57 @@ header {
         width: 30%;
         margin-left: 8px;
       }
+      button {
+        width: 30%;
+        margin-left: 8px;
+        font-size: 15px;
+        height: 36px;
+        font-weight: lighter !important;
+      }
     }
 
   }
   .upNext {
-    margin-top: 100px;
+    margin-top: 112px;
     background-color: $primary;
-    border-radius: 5px;
+    border-radius: 0 20px;
+    height: 250px;
 
     .up-next {
       @extend .header-styles;
     }
 
     .suggestion {
-      height: 200px;
-
+      height: 120px;
       #result {
-        font-size: 50px;
-        color: #F75C03;
+        @extend .header-styles;
+        color: $tertiary;
       }
-
-      .cue-div{
-        position: relative;
-        top: 600px;
+    }
+    .cue-div{
+      .button {
+        left: 66%;
+        width: 30%;
       }
     }
   }
-  .setTitle {
+
+  .movie-container {
+    height: 400px;
+    overflow: auto;
     margin-top: 88px;
+    border-radius: 0 20px;
     background-color: $primary;
-    border-radius: 5px;
+    .moviediv {
+      height: 200px;
+      width: 300px;
+    }
+  }
+
+  .setTitle {
+    margin-top: 12px;
+    background-color: $primary;
+    border-radius: 0 20px;
     height: 200px;
     ul {
       list-style: none;
@@ -130,19 +165,14 @@ header {
         padding-left: 10px;
       }
     }
+    .button {
+      left: 33%;
+      width: 30%;
+    }
   }
 
 
-    .movie-container {
-      height: 400px;
-      overflow: auto;
-      margin-top: 20px;
-      background-color: $primary;
-      .moviediv {
-        height: 200px;
-        width: 300px;
-      }
-    }
+
 
 
 }
@@ -176,37 +206,36 @@ header {
 }
 
 .sets-index-main {
-  background-color: #1B264F;
+  background-color: $primary;
   border-radius: 10px;
+  overflow: auto;
   height: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 200px;
   font-size: 30px;
-
+  h1 {
+    @extend .header-styles;
+  }
   ul {
     list-style: none;
-
     li {
-      height: 100px;
       display: inline;
       a {
-        text-decoration: none;
-        color: #F75C03;
         @extend.button-styles;
-        float: left;
-
+        margin: 10px;
+        width: 130px;
       }
-
+    }
+  }
+  .spanny {
+    width: 130px;
+    margin-left: 10px;
+      a {
+        width: 130px;
+      }
     }
 
-  }
+}
 
-}
-.button-set {
-  float: left;
-}
 
 .reg-form {
   font-size: 20px;
