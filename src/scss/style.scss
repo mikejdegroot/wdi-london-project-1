@@ -1,19 +1,17 @@
-@import "bootstrap/bootstrap-grid";
-
-$primary: #1B264F;
+// @import "bootstrap/bootstrap-grid";
+$primary: #272727;
 $secondary: black;
 $tertiary: #111933;
 
 * {
   font-family: 'Rajdhani', sans-serif;
-  margin: 0 auto;
-  font-weight: bold;
 }
 
 body {
-  background-color: $secondary;
   margin-top: 20px;
-  color: DeepPink;
+  height: 100vh;
+  background-color: $secondary;
+  color: white;
 }
 
 header {
@@ -37,11 +35,6 @@ header {
     }
   }
 }
-.colomns {
-  float: left;
-}
-
-
 .main {
   h1 {
     font-size: 100px;
@@ -68,14 +61,14 @@ header {
   text-decoration: none;
   @extend.button-styles;
 }
-.show-page-main {
 
-  .setlist {
+#setShowPage {
+  .setList {
+    background-color: $primary;
     font-size: 25px;
-    height: 1000px;
-    background-color: #1B264F;
-    border-radius: 10px;
-    margin-top: 40px;
+    height: 500px;
+    border-radius: 5px;
+    margin-top: 100px;
 
     h4{
       font-size: 40px;
