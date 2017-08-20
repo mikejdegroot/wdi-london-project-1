@@ -1,5 +1,9 @@
 @import "bootstrap/bootstrap-grid";
 
+$primary: #1B264F;
+$secondary: black;
+$tertiary: #111933;
+
 * {
   font-family: 'Rajdhani', sans-serif;
   margin: 0 auto;
@@ -7,7 +11,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: $secondary;
   margin-top: 20px;
   color: DeepPink;
 }
@@ -19,7 +23,7 @@ header {
   right: 0;
   z-index: 2;
   height: 60px;
-  background-color: #111933;
+  background-color: $tertiary;
   nav {
     margin-top: 8px;
     font-size: 30px;
