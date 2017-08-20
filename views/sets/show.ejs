@@ -17,13 +17,15 @@
       <div class="nowPlaying">
         <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
         <h4>What are you listening to?</h4>
-        <div>
+        <div class="field">
           <form method="POST" action="/sets/<%= set.id %>/tracks">
-            <input type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
+            <input class= "input" type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
         </div>
-          <button class="button-styles" >Add to set!</button>
-          <button class="button-styles" type="button" id="getsong">Suggest a banger</button>
-          <button class="button-styles" type="button" id="play">Play!</button>
+        <div class="controls">
+          <a class="button is-info" >Add to set!</a>
+          <a class="button is-info" type="a" id="getsong">Suggest a banger</a>
+          <a class="button is-info" type="a" id="play">Play!</a>
+        </div>
           </form>
       </div>
       <div class="upNext">
