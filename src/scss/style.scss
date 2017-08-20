@@ -7,6 +7,11 @@ $tertiary: #111933;
   font-family: 'Rajdhani', sans-serif;
 }
 
+.header-styles {
+  font-size: 30px;
+  padding: 8px;
+}
+
 body {
   margin-top: 20px;
   height: 100vh;
@@ -21,7 +26,7 @@ header {
   right: 0;
   z-index: 2;
   height: 60px;
-  background-color: $tertiary;
+  background-color: $primary;
   nav {
     margin-top: 8px;
     font-size: 30px;
@@ -30,7 +35,7 @@ header {
       a {
         text-decoration: none;
         padding: 20px 50px;
-        color: #F75C03;
+        color: white;
       }
     }
   }
@@ -46,22 +51,6 @@ header {
   }
 }
 
-.button-styles {
-  background-color: black;
-  border-style: none;
-  border-radius: 3px;
-  padding: 10px;
-  margin: 6px;
-  color: #F75C03;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.edit-button {
-  text-decoration: none;
-  @extend.button-styles;
-}
-
 #setShowPage {
   .setList {
     background-color: $primary;
@@ -69,26 +58,63 @@ header {
     height: 500px;
     border-radius: 5px;
     margin-top: 100px;
-
     h4{
       font-size: 40px;
       padding: 10px;
     }
-
     .ps{
       display: block;
       font-size: 22px;
       padding: 10px;
 
     }
+  }
+  .nowPlaying {
+    margin-top: 100px;
+    background-color: $primary;
+    border-radius: 10px;
+    height: 180px;
+    width: 100%;
+    font-size: 30px;
+    h4 {
+      @extend .header-styles
+    }
+    #content {
+    width: 80%;
+    margin: 10px;
+    padding: 5px;
+    font-size: 25px;
+    }
 
   }
+  .upNext {
+    margin-top: 100px;
+    background-color: $primary;
+    border-radius: 5px;
 
-  .set-title {
-    margin-top: 60px;
-    background-color: #1B264F;
-    border-radius: 10px;
-    height: 240px;
+    .up-next {
+      color: white;
+    }
+
+    .suggestion {
+      height: 200px;
+
+      #result {
+        font-size: 50px;
+        color: #F75C03;
+      }
+
+      .cue-div{
+        position: relative;
+        top: 600px;
+      }
+    }
+  }
+  .setTitle {
+    margin-top: 100px;
+    background-color: $primary;
+    border-radius: 5px;
+    height: 250px;
 
     ul {
       list-style: none;
@@ -112,64 +138,19 @@ header {
 
   }
 
-  .nowplaying {
-    margin-top: 70px;
-    background-color: #1B264F;
-    border-radius: 10px;
-    height: 180px;
-    width: 100%;
-    font-size: 30px;
-
-    h4 {
-      font-size: 25px;
-      padding: 10px;
-      color: #F75C03;
-
-    }
-
-    #content {
-    width: 80%;
-    margin: 10px;
-    padding: 5px;
-    font-size: 25px;
-    }
-
-  }
-
-
-  .upnext {
-    margin-top: 70px;
-
-    .up-next {
-      color: #F75C03;
-    }
-
-    .suggestion {
-      height: 200px;
-
-      #result {
-        font-size: 50px;
-        color: #F75C03;
-      }
-
-      .cue-div{
-        position: relative;
-        top: 600px;
-      }
-    }
 
     .movie-container {
       height: 400px;
       overflow: auto;
       margin-top: 20px;
-      background-color: #1B264F;
+      background-color: $primary;
       .moviediv {
         height: 200px;
         width: 300px;
       }
     }
 
-  }
+
 }
 
 .form-div {

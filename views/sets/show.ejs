@@ -12,37 +12,21 @@
           <% } %>
         <% }) %>
     </div>
-    <div class="col-lg-4">
-      <div class="set-title">
-          <ul>
-            <li><h2 class="setname"><%=set.name %></h2></li>
-            <li><h3 class="setdate"><%=set.date %></h3></li>
-            <li><p class="setuser"><%=set.createdBy.username %></p></li>
-          </ul>
+
+    <div class="column is-4 is-offset-1">
+      <div class="nowPlaying">
+        <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
+        <h4>What are you listening to?</h4>
         <div>
-          <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-            <a href="/sets/<%= set.id %>/edit" class="edit-button">Edit</a>
-            <form method="POST" action="/sets/<%= set.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="button-styles">Delete</button>
-            </form>
-          <% } %>
+          <form method="POST" action="/sets/<%= set.id %>/tracks">
+            <input type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
         </div>
-      </div>
-        <div class="colomns nowplaying">
-            <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-          <h4>What are you listening to?</h4>
-          <div>
-            <form method="POST" action="/sets/<%= set.id %>/tracks">
-              <input type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
-          </div>
-            <button class="button-styles" >Add to set!</button>
-            <button class="button-styles" type="button" id="getsong">Suggest a banger</button>
-            <button class="button-styles" type="button" id="play">Play!</button>
+          <button class="button-styles" >Add to set!</button>
+          <button class="button-styles" type="button" id="getsong">Suggest a banger</button>
+          <button class="button-styles" type="button" id="play">Play!</button>
           </form>
       </div>
-    </div>
-      <div class="colomns col-lg-3 upnext">
+      <div class="upNext">
         <h4 class="up-next">Up Next...</h4>
         <div class="suggestion">
           <span id="result"></span>
@@ -50,12 +34,29 @@
         <div class="cue-div">
           <button class="button-styles cue"> <<< cue </button>
         </div>
+      </div>
+    <% } %>
+    </div>
+
+      <div class="column is-3">
+        <div class="setTitle">
+            <ul>
+              <li><h2 class="setname"><%=set.name %></h2></li>
+              <li><h3 class="setdate"><%=set.date %></h3></li>
+              <li><p class="setuser"><%=set.createdBy.username %></p></li>
+            </ul>
+          <div>
+            <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
+              <a href="/sets/<%= set.id %>/edit" class="edit-button">Edit</a>
+              <form method="POST" action="/sets/<%= set.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="button-styles">Delete</button>
+              </form>
+            <% } %>
+          </div>
+        </div>
         <div class="movie-container">
           <div class="moviediv"></div>
         </div>
       </div>
-
-    <% } %>
-  </div>
-
-</section>
+  </section>
