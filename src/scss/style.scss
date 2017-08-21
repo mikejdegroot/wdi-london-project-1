@@ -229,6 +229,14 @@ section {
   }
 }
 
+.editWarning {
+  margin-top: -500px;
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px #000;
+  }
+}
 #loginScreen, #registerScreen {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/cassett.jpg');
   background-attachment: fixed;

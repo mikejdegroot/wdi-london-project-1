@@ -15,18 +15,20 @@
 
     <div class="column is-4 is-offset-1">
       <div class="nowPlaying">
-        <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
+
         <h4>Track</h4>
         <div class="field">
           <form method="POST" action="/sets/<%= set.id %>/tracks">
             <input class= "input" type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
         </div>
         <div class="controls">
+          <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
           <button class="button infoy" >Add to set!</button>
           <a class="button infoy" type="a" id="getsong">Suggest a banger</a>
           <a class="button infoy" type="a" id="play">Play!</a>
         </div>
           </form>
+      <% } %>
       </div>
       <div class="upNext">
         <h4 class="up-next">Up Next...</h4>
@@ -37,9 +39,9 @@
           <a class="button infoy cue"> <<< cue </a>
         </div>
       </div>
-    <% } %>
-    </div>
 
+    </div>
+<% if(locals.isLoggedIn && set.belongsTo(user)) { %>
     <div class="column is-3">
       <div class="movie-container">
         <div class="moviediv"></div>
@@ -51,8 +53,6 @@
             <li><p class="setuser"><%=set.createdBy.username %></p></li>
           </ul>
         <div>
-          <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
-
             <form method="POST" action="/sets/<%= set.id %>">
             <a href="/sets/<%= set.id %>/edit" class="button infoy">Edit</a>
             <input type="hidden" name="_method" value="DELETE">
@@ -62,10 +62,13 @@
         </div>
       </div>
     </div>
+<% if(locals.isLoggedIn && !set.belongsTo(user)) { %>
 
-      <div class="column is-2">
-
+    <div class="column is-3 is-offset-8">
+      <div class="editWarning">
+        <p>You must be the owner of the set to make changes. </p>
+        <p>Go to the set screen to create a new set or find your own.</p>
       </div>
-
-
-  </section>
+    </div>
+  <% } %>
+</section>
