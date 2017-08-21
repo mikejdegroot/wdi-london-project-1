@@ -20,10 +20,10 @@ $tertiary: #4C56B5;
   }
 }
 body {
-  margin-top: 20px;
-  height: 100vh;
+  // height: 100vh;
   background-color: $secondary;
   color: white;
+  text-transform: uppercase;
 }
 
 header {
@@ -47,19 +47,36 @@ header {
     }
   }
 }
-.main {
-  h1 {
-    font-size: 100px;
+
+#splashPage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/cassett.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  .splashTitle {
+    width: 45%;
+    text-align: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 30%;
     transform: translate(-50%, -50%);
-    color: #F75C03;
+    color: black;
+    font-weight: 600;
+    opacity: 0.8;
+    h1 {
+      font-size: 100px;
+    }
+    p {
+      font-size: 20px;
+    }
   }
 }
+
 section {
-  height: 100vh;
+  height: 102vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/tape-deck.jpg');
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -69,7 +86,9 @@ section {
   background-color: $tertiary;
   border: none;
   color: black;
-  font-weight: bold;
+  // font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .infoy {
@@ -77,6 +96,7 @@ section {
   border: none;
   color: black;
   font-weight: bold;
+  letter-spacing: 0.03em;
 }
 
 .newey {
@@ -129,10 +149,12 @@ section {
         margin-left: 8px;
         font-size: 15px;
         height: 36px;
-        font-weight: lighter !important;
+        font-weight: 400 !important;
         background-color: #B0ACA9;
         border: none;
         color: black;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
       }
     }
 

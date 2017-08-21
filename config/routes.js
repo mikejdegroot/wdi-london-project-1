@@ -17,8 +17,8 @@ router.route('/')
 .get(statics.index);
 
 router.route('/sets')
-.get(set.index)
-.post(set.create);
+.get(secureRoute, set.index)
+.post(secureRoute, set.create);
 
 router.route('/sets/new')
 .get(secureRoute,set.new);
