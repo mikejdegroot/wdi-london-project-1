@@ -1,15 +1,16 @@
-<div class="row">
-  <div class="col-lg-4 form-div">
-    <h1>Edit The Set</h1>
-    <form method="POST"class="submit-form"  action="/sets/<%= set.id %>">
-      <input type="hidden" name="_method" value="PUT">
-      <div class="form-body">
-        <div class="form-group">
-          <label>name</label>
-          <input type="text" class="form-control" name="name" id="nameInput" placeholder="Set Name" >
+<section id="setEdit">
+  <div class="columns">
+    <div class="column is-3 is-offset-2 form-div">
+      <h1>Edit The Set</h1>
+      <form method="POST"class="submit-form"  action="/sets/<%= set.id %>">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="field">
+            <input type="text" class="input" name="name" id="nameInput" placeholder="Set Name">
         </div>
-        <button type="submit" class="button-styles">Submit</button>
-      </div>
-    </form>
+        <div class="submit">
+          <button type="submit" class="button is-black">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</section>

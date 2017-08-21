@@ -1,19 +1,18 @@
-<div class="row">
-  <div class="col-lg-4 form-div">
-    <h1>set create</h1>
-<!-- form for adding new entry to db-->
-    <form class="submit form" name="_method" method="POST" action="/sets">
-      <div class="form-body">
-        <div class="form-group">
-          <label>Set Name</label>
-          <input type="text" class="form-control" name="name" id="nameInput" placeholder="Set Name">
-        </div>
-        <div class="form-group">
-          <label>Date</label>
-          <input type="text" class="form-control" name="date"id="dateInput" placeholder="DD/MM/YYYY">
-        </div>
-      </div>
-      <button type="submit" class="button-styles">Submit</button>
-    </form>
+<section is="setCreate">
+  <div class="columns">
+    <div class="column is-3 is-offset-2 form-div">
+      <h1>set create</h1>
+      <form class="submit form" name="_method" method="POST" action="/sets">
+          <div class="field">
+            <input type="text" class="input" name="name" id="nameInput" placeholder="Set Name">
+          </div>
+          <div class="field">
+            <input type="text" class="input" name="date"id="dateInput" placeholder="DD/MM/YYYY">
+          </div>
+          <div class="submit">
+            <button type="submit" class="button infoy">Submit</button>
+          </div>
+      </form>
+    </div>
   </div>
-</div>
+</section>
