@@ -227,43 +227,42 @@ section {
       width: 30%;
     }
   }
-
-
-
-
-
 }
 
-#loginScreen {
+#loginScreen, #registerScreen {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/cassett.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  .form-div {
-    background-color: $primary;
-    margin-top: 200px;
-    border-radius: 10px;
-    height: 400px;
-    h1 {
-      @extend .header-styles;
-    }
-    .input {
-      width: 90%;
-      font-size: 20px;
-      left: 20px;
-      margin-top: 20px;
-    }
-      .submit {
-        margin-top: 40px;
-        margin-left: 8px;
-        button, a {
-          margin: 12px;
-          &:hover {
-            color: $tertiary;
-          }
+}
+
+.form-div {
+  background-color: $primary;
+  margin-top: 200px;
+  border-radius: 10px;
+  height: 400px;
+  h1 {
+    @extend .header-styles;
+  }
+  .input {
+    width: 90%;
+    font-size: 20px;
+    left: 20px;
+    margin-top: 10px;
+  }
+    .submit {
+      margin-top: 40px;
+      margin-left: 8px;
+      button, a {
+        margin: 12px;
+        &:hover {
+          color: $tertiary;
         }
       }
+    }
+    #regButton {
+      margin-top: -20px;
     }
   }
 
@@ -291,42 +290,19 @@ section {
       }
     }
   }
-  .spanny {
-    width: 130px;
-    margin-left: 10px;
-      a {
-        width: 130px;
-      }
+.spanny {
+  width: 130px;
+  margin-left: 10px;
+    a {
+      width: 130px;
     }
-
-}
-
-
-.reg-form {
-  font-size: 20px;
-  padding: 15px;
-  height: 550px;
-
-  .form-control {
-    margin: 5px;
   }
-  .login-reg-div {
-    margin-top: 150px;
-    position: relative;
-    }
 }
+
 
 .prof-btn {
   margin-top: 20px;
 }
-
-
-
-
-
-
-
-
 
 .has-error {
   border-color: DeepPink;
