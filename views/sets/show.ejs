@@ -1,19 +1,19 @@
 <section id="setShowPage">
   <div class="columns">
-    <div class="column is-3 is-offset-1 setList">
+    <div class="column is-2 is-offset-1 setList">
         <h4>Set List</h4>
         <% set.tracks.forEach((track) => { %>
           <p class="ps"><%= track.content %></p>
           <% if(locals.isLoggedIn && track.belongsTo(user)) { %>
             <form method="POST" action="/sets/<%= set.id %>/tracks/<%= track.id %>">
             <input type="hidden" name="_method" value="DELETE">
-            <button class="button is-danger is-small">Delete</button>
+            <button class="button dangery is-small">Delete</button>
             </form>
           <% } %>
         <% }) %>
     </div>
 
-    <div class="column is-4">
+    <div class="column is-4 is-offset-1">
       <div class="nowPlaying">
         <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
         <h4>Track</h4>
@@ -22,9 +22,9 @@
             <input class= "input" type="text" name="content" id="content" placeholder="What's on??" value="<%= set.tracks.length ? set.tracks[set.tracks.length-1].content : '' %>"></input>
         </div>
         <div class="controls">
-          <button class="button is-info" >Add to set!</button>
-          <a class="button is-info" type="a" id="getsong">Suggest a banger</a>
-          <a class="button is-info" type="a" id="play">Play!</a>
+          <button class="button infoy" >Add to set!</button>
+          <a class="button infoy" type="a" id="getsong">Suggest a banger</a>
+          <a class="button infoy" type="a" id="play">Play!</a>
         </div>
           </form>
       </div>
@@ -34,7 +34,7 @@
           <span id="result"></span>
         </div>
         <div class="cue-div">
-          <a class="button is-info cue"> <<< cue </a>
+          <a class="button infoy cue"> <<< cue </a>
         </div>
       </div>
     <% } %>
@@ -54,9 +54,9 @@
           <% if(locals.isLoggedIn && set.belongsTo(user)) { %>
 
             <form method="POST" action="/sets/<%= set.id %>">
-            <a href="/sets/<%= set.id %>/edit" class="button is-info">Edit</a>
+            <a href="/sets/<%= set.id %>/edit" class="button infoy">Edit</a>
             <input type="hidden" name="_method" value="DELETE">
-            <a class="button is-danger">Delete</a>
+            <a class="button dangery">Delete</a>
             </form>
           <% } %>
         </div>
